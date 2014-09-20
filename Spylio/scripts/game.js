@@ -2,34 +2,60 @@
 
 var startlat = 0.0;
 var startlon = 0.0;
+var token = "";
 
 var dataurl = "http://nirvanutest.cloudapp.net/";
-var registerEnd = "";
 var g_timeout = 5000;
 
-$(document).ready(startup());
+//$(document).ready(startup());
 
-function register(phonenumber, name, callback) {
-    var OK = false;
-    registerEnd = callback;
-    var data = "?";
-
-    getData("register", data, registerOK, registerFail);
-    return OK;
+function startRegister() {
+    if (checkForGeolocate()) {
+        register($('#phone').text, $('#name').tex, function (result) {
+        });
+        setInterval(function () { getLocation(); }, 3000);
+    }
 }
 
-function registerOK(data, textStatus, XMLHttpRequest) {
+function register(phonenumber, name, callback) {
+    var data = "register/?phone=" + phonenumber + "&name=" + name;
+
+    getData("register", data, registerOK, registerFail, callback);
+}
+
+function registerOK(data, textStatus, XMLHttpRequest, callback) {
     var result = false;
     if (data != null) {
         var res = data;
         result = true;
     }
-    registerEnd(result);
+    callback(result);
 }
 
-function registerFail(XMLHttpRequest, textStatus, thrownError) {
-    registerEnd(false);
+function registerFail(XMLHttpRequest, textStatus, thrownError, callback) {
+    callback(false);
 }
+
+function updateLocation(lat, lon, callback) {
+    locationEnd = callback;
+    var data = "update/?token="+ token + "&lat=" + lat + "&lon=" + lon;
+
+    getData("register", data, locationOK, locationFail, callback);
+}
+
+function locationOK(data, textStatus, XMLHttpRequest, callback) {
+    var result = false;
+    if (data != null) {
+        var res = data;
+        result = true;
+    }
+    callback(result);
+}
+
+function locationFail(XMLHttpRequest, textStatus, thrownError, callback) {
+    callback(false);
+}
+
 
 function startup() {
     if (checkForGeolocate()) {
@@ -86,15 +112,16 @@ Number.prototype.toRad = function () {
     return this * Math.PI / 180;
 };
 
-function getData(pid, s, succeed, fail) {
-    var url = dataurl + "tdata/downloadp/";
-    var req = $.ajax(url + pid + "/" + s + "/", {
+function getData(pid, s, succeed, fail, callback) {
+    var url = dataurl + s;
+    url = encodeURI(url)
+    var req = $.ajax(url, {
         type: 'GET',
         dataType: 'jsonp',
         scriptCharset: "utf-8",
         cache: false,
-        success: function (data, textStatus, XMLHttpRequest) { succeed(data, textStatus, XMLHttpRequest); },
+        success: function (data, textStatus, XMLHttpRequest) { succeed(data, textStatus, XMLHttpRequest, callback); },
         timeout: g_timeout,
-        error: function (XMLHttpRequest, textStatus, thrownError) { fail(XMLHttpRequest, textStatus, thrownError); }
+        error: function (XMLHttpRequest, textStatus, thrownError) { fail(XMLHttpRequest, textStatus, thrownError, callback); }
     });
 }
