@@ -68,10 +68,12 @@
   <ItemGroup>
     <Content Include="Content\qunit.css" />
     <Content Include="index.html" />
+    <Content Include="QUnitResults.html" />
     <Content Include="scripts\game.js" />
     <Content Include="scripts\jquery-2.1.1.min.js" />
     <Content Include="scripts\qunit.js" />
     <Content Include="SpylioHome.html" />
+    <Content Include="testscripts\spyliotests.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="styles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

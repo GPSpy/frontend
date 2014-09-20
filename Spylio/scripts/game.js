@@ -3,10 +3,39 @@
 var startlat = 0.0;
 var startlon = 0.0;
 
+var dataurl = "http://nirvanutest.cloudapp.net/";
+var registerEnd = "";
+var g_timeout = 5000;
+
 $(document).ready(startup());
+
+function register(phonenumber, name, callback) {
+    var OK = false;
+    registerEnd = callback;
+    var data = "?";
+
+    getData("register", data, registerOK, registerFail);
+    return OK;
+}
+
+function registerOK(data, textStatus, XMLHttpRequest) {
+    var result = false;
+    if (data != null) {
+        var res = data;
+        result = true;
+    }
+    registerEnd(result);
+}
+
+function registerFail(XMLHttpRequest, textStatus, thrownError) {
+    registerEnd(false);
+}
 
 function startup() {
     if (checkForGeolocate()) {
+        register("1234", "me", function (result) {
+            var x = 0;
+        });
         setInterval(function () { getLocation(); }, 3000);
     }
 }
@@ -52,6 +81,20 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     var d = R * c;
     return d;
 }
+
 Number.prototype.toRad = function () {
     return this * Math.PI / 180;
+};
+
+function getData(pid, s, succeed, fail) {
+    var url = dataurl + "tdata/downloadp/";
+    var req = $.ajax(url + pid + "/" + s + "/", {
+        type: 'GET',
+        dataType: 'jsonp',
+        scriptCharset: "utf-8",
+        cache: false,
+        success: function (data, textStatus, XMLHttpRequest) { succeed(data, textStatus, XMLHttpRequest); },
+        timeout: g_timeout,
+        error: function (XMLHttpRequest, textStatus, thrownError) { fail(XMLHttpRequest, textStatus, thrownError); }
+    });
 }
