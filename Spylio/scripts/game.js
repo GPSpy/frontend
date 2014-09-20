@@ -4,14 +4,14 @@ var startlat = 0.0;
 var startlon = 0.0;
 var token = "";
 
-var dataurl = "http://nirvanutest.cloudapp.net/";
+var dataurl = "http://gpspy.eu1.frbit.net/";
 var g_timeout = 5000;
 
 //$(document).ready(startup());
 
 function startRegister() {
     if (checkForGeolocate()) {
-        register($('#phone').text, $('#name').tex, function (result) {
+        register($('#phone').val(), $('#name').val(), function (result) {
         });
         setInterval(function () { getLocation(); }, 3000);
     }
@@ -20,14 +20,18 @@ function startRegister() {
 function register(phonenumber, name, callback) {
     var data = "register/?phone=" + phonenumber + "&name=" + name;
 
-    getData("register", data, registerOK, registerFail, callback);
+    getData(data, registerOK, registerFail, callback);
 }
 
 function registerOK(data, textStatus, XMLHttpRequest, callback) {
     var result = false;
     if (data != null) {
         var res = data;
-        result = true;
+        var temp = res.token;
+        if (temp != null) {
+            token = temp;
+            result = true;
+        }        
     }
     callback(result);
 }
@@ -37,10 +41,9 @@ function registerFail(XMLHttpRequest, textStatus, thrownError, callback) {
 }
 
 function updateLocation(lat, lon, callback) {
-    locationEnd = callback;
-    var data = "update/?token="+ token + "&lat=" + lat + "&lon=" + lon;
+    var data = "locate/?token=" + token + "&lat=" + lat + "&lon=" + lon;
 
-    getData("register", data, locationOK, locationFail, callback);
+    getData(data, locationOK, locationFail, callback);
 }
 
 function locationOK(data, textStatus, XMLHttpRequest, callback) {
@@ -94,6 +97,8 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude +
     "<br>Distance: " + calculateDistance(startlat,startlon, position.coords.latitude, position.coords.longitude)
     );
+    updateLocation(position.coords.latitude, position.coords.longitude, function (result) {
+    });
 }
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -112,7 +117,7 @@ Number.prototype.toRad = function () {
     return this * Math.PI / 180;
 };
 
-function getData(pid, s, succeed, fail, callback) {
+function getData(s, succeed, fail, callback) {
     var url = dataurl + s;
     url = encodeURI(url)
     var req = $.ajax(url, {
@@ -120,8 +125,12 @@ function getData(pid, s, succeed, fail, callback) {
         dataType: 'jsonp',
         scriptCharset: "utf-8",
         cache: false,
-        success: function (data, textStatus, XMLHttpRequest) { succeed(data, textStatus, XMLHttpRequest, callback); },
+        success: function (data, textStatus, XMLHttpRequest) {
+            succeed(data, textStatus, XMLHttpRequest, callback);
+        },
         timeout: g_timeout,
-        error: function (XMLHttpRequest, textStatus, thrownError) { fail(XMLHttpRequest, textStatus, thrownError, callback); }
+        error: function (XMLHttpRequest, textStatus, thrownError) {
+            fail(XMLHttpRequest, textStatus, thrownError, callback);
+        }
     });
 }
