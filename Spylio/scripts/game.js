@@ -12,6 +12,7 @@ var lattarget = 52.488903;
 var lathot = 52.489170;
 var latwarm = 52.489970;
 var latcold = 52.499970;
+var testoffset = 0.1;
 
 //$(document).ready(startup());
 
@@ -82,6 +83,7 @@ function locationOK(data, textStatus, XMLHttpRequest, callback) {
              "<br>Server Distance: " + dist +
              "<br>Destination: " + dest
             );
+            if (temp === "target") alert("You made it");
         }
     }
     callback(result);
@@ -129,7 +131,7 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude +
     "<br>Distance: " + calculateDistance(startlat,startlon, position.coords.latitude, position.coords.longitude)
     );
-    updateLocation(position.coords.latitude, position.coords.longitude, function (result) {
+    updateLocation(position.coords.latitude + testoffset, position.coords.longitude, function (result) {
     });
 }
 
