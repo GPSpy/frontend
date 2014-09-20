@@ -41,7 +41,7 @@ function registerFail(XMLHttpRequest, textStatus, thrownError, callback) {
 }
 
 function updateLocation(lat, lon, callback) {
-    var data = "locate/?token=" + token + "&lat=" + lat + "&lon=" + lon;
+    var data = "locate/?token=" + token + "&latitude=" + lat + "&longitude=" + lon;
 
     getData(data, locationOK, locationFail, callback);
 }
@@ -51,14 +51,16 @@ function locationOK(data, textStatus, XMLHttpRequest, callback) {
     if (data != null) {
         var res = data;
         var temp = res.hotness;
-        if (temp != null) {
+        var dist = res.distance;
+        if ((temp != null) && (dist != null))  {
             result = true;
-            $("#temperature").html("Hotness: " + temp);
+            $("#temperature").html("<br>Hotness: " + temp +
+             "<br>Server Distance: " +  dist  );
         }
     }
     callback(result);
 }
-
+null
 function locationFail(XMLHttpRequest, textStatus, thrownError, callback) {
     callback(false);
 }
