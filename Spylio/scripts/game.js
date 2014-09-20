@@ -7,7 +7,30 @@ var token = "";
 var dataurl = "http://gpspy.eu1.frbit.net/";
 var g_timeout = 5000;
 
+var longstd = -1.8870747;
+var lattarget = 52.488903;
+var lathot = 52.489170;
+var latwarm = 52.489970;
+var latcold = 52.499970;
+
 //$(document).ready(startup());
+
+function goThere() {
+    updateLocation(lattarget, longstd, function (result) {
+    });
+}
+function goHot() {
+    updateLocation(lathot, longstd, function (result) {
+    });
+}
+function goWarm() {
+    updateLocation(latwarm, longstd, function (result) {
+    });
+}
+function goCold() {
+    updateLocation(latcold, longstd, function (result) {
+    });
+}
 
 function startRegister() {
     if (checkForGeolocate()) {
