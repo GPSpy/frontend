@@ -52,10 +52,13 @@ function locationOK(data, textStatus, XMLHttpRequest, callback) {
         var res = data;
         var temp = res.hotness;
         var dist = res.distance;
-        if ((temp != null) && (dist != null))  {
+        var dest = res.destination;
+        if ((temp != null) && (dist != null)  && (dest != null)) {
             result = true;
             $("#temperature").html("<br>Hotness: " + temp +
-             "<br>Server Distance: " +  dist  );
+             "<br>Server Distance: " + dist +
+             "<br>Destination: " + dest
+            );
         }
     }
     callback(result);
