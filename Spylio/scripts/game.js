@@ -50,7 +50,11 @@ function locationOK(data, textStatus, XMLHttpRequest, callback) {
     var result = false;
     if (data != null) {
         var res = data;
-        result = true;
+        var temp = res.hotness;
+        if (temp != null) {
+            result = true;
+            $("#temperature").html("Hotness: " + temp);
+        }
     }
     callback(result);
 }
