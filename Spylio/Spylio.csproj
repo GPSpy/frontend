@@ -78,6 +78,9 @@
     <Content Include="twiml\1.xml" />
     <Content Include="twiml\2.xml" />
     <Content Include="twiml\3.xml" />
+    <Content Include="twiml\4.xml" />
+    <Content Include="twiml\5.xml" />
+    <Content Include="twiml\6.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
