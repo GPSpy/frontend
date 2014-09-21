@@ -5,3 +5,13 @@
   line-height: 1.5;
   margin: 0;
 }
+
+button {
+    width:5em;
+    height:1em;
+}
+
+input {
+    width:10em;
+    height:1em;
+}
