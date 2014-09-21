@@ -1,0 +1,10 @@
+﻿{
+    "places": {
+       "place":  { "name": "Innovation Birmingham Campus", "Latitude": 52.48871909, "longitude": -1.88758850 },
+       "place":  { "name": "Gosta Green", "Latitude": 52.4878110, "longitude": -1.8872666 },
+       "place":  { "name": "Sacks Of Potatoes", "Latitude": 52.487334086, "longitude": -1.888135671 },
+       "place":  { "name": "Aston University Entrance", "Latitude": 52.48678529, "longitude": -1.88931584 },
+       "place":  { "name": "Tesco", "Latitude": 52.4857660, "longitude": -1.8900775 },
+       "place":  { "name": "Lakeside", "Latitude": 52.484090, "longitude": -1.8898522 }
+    }
+}
