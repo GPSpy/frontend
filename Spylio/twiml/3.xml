@@ -3,5 +3,5 @@
   <Pause length="1"/>
   <Say voice="man" language="en-us">This is HYDRA. We've planted 4 bombs around the University. If you don't pay us £1000000 within half an hour, we'll detonate them.</Say>
   <Pause length="1"/>
-  <Say voice="alice" language="en-gb">HYDRA, you know we don't negioate with terrorsists. Agent X, find and defuse the bombs.</Say>
+  <Say voice="alice" language="en-gb">HYDRA, you know we don't negotiate with terrorists. Agent X, find and defuse the bombs!</Say>
 </Response>
