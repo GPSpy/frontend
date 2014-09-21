@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
-  <Say voice="man" loop="2">Agent X, this is HYDRA. We've planted 4 bombs around the city. If you don't pay us £1000000 within half an hour, we'll detonate them.</Say>
+  <Pause length="1"/>
+  <Say voice="man" language="en-us" loop="2">This is HYDRA. We've planted 4 bombs around the University. If you don't pay us £1000000 within half an hour, we'll detonate them.</Say>
+  <Pause length="1"/>
+  <Say voice="alice" language="en-gb">HYDRA, you know we don't negioate with terrorsists. Agent X, find and defuse the bombs.</Say>
 </Response>

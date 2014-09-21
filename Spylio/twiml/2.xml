@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
-  <Say voice="woman" loop="2">Agent X, I saw the suspect entering a popular fast food restaurant.</Say>
+   <Pause length="1"/>
+   <Say voice="woman" language="en-us">Agent X, We've heard reports of the suspect entering into a popular pub near Aston University, but have been unable to establish which one. Your objective is to track down the suspect.</Say>
 </Response>

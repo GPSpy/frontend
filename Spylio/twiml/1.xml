@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
    <Pause length="1"/>
-   <Say voice="alice" language="en-gb">Agent X, this is Agent ALICE. The first objective is to meet with your contact at Victoria Square."</Say>
+   <Say voice="alice" language="en-gb">Agent X, this is Agent ALICE. The first objective is to meet with your contact at Gosta Green.</Say>
 </Response>
-

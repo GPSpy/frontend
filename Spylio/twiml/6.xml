@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
-  <Say voice="alice" loop="2">You have gone all the way</Say>
+  <Pause length="1"/>
+  <Say voice="man" language="en-us" loop="2">You may have won this mission, but you have not won the war. HYDRA will return!</Say>
+  <Pause length="1"/>
+  <Say voice="alice" language="en-gb">HYDRA, you know we don't negioate with terrorsists. Agent X, find and defuse the bombs.</Say>
 </Response>

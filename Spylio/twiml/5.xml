@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
-  <Say voice="alice" loop="2">You're nearly there</Say>
+   <Pause length="1"/>
+   <Say voice="woman" language="en-us">Thank you for saving me, but HYDRA is escaping - get after them!</Say>
 </Response>

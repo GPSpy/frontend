@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
-  <Say voice="alice" loop="2">OK this is the difficult one</Say>
+   <Pause length="1"/>
+   <Say voice="alice" language="en-gb">Congratulations Agent X, You've successfully defused the bombs, but we need you to rescue the field agent.</Say>
 </Response>
