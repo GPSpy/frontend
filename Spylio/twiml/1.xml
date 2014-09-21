@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
-   <Say voice="alice" loop="2">Walk over to the floozie in the jacuzzi</Say>
+   <Say voice="alice" loop="2">Agent X, this is Nick Fury of SHIELD. The first objective is to meet with your contact at Victoria Square.</Say>
 </Response>

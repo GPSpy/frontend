@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Response>
-  <Say voice="alice" loop="2">Your next destination</Say>
+  <Say voice="alice" loop="2">Agent X, this is HYDRA. We've planted 4 bombs around the city. If you don't pay us £1000000 within half an hour, we'll detonate them.</Say>
 </Response>
