@@ -14,6 +14,9 @@ var latwarm = 52.489970;
 var latcold = 52.499970;
 var testoffset = 0.1;
 
+var lats = [52.48871909, 52.4878110, 52.487334086, 52.48678529, 52.4857660, 52.484090];
+var lons = [-1.88758850, -1.8872666, -1.888135671, -1.88931584, -1.8900775, -1.8898522];
+
 //$(document).ready(startup());
 
 function goThere() {
@@ -30,6 +33,12 @@ function goWarm() {
 }
 function goCold() {
     updateLocation(latcold, longstd, function (result) {
+    });
+}
+
+function goTo(n) {
+    n = n - 1;
+    updateLocation(lats[n], lons[n], function (result) {
     });
 }
 
